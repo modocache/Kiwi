@@ -9,24 +9,24 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWStringContainsMatcherTest : SenTestCase
+@interface KWStringContainsMatcherTest : XCTestCase
 @end
 
 @implementation KWStringContainsMatcherTest
 
 - (void)testShouldMatchItemIfItContainsTheSubstring
 {
-  STAssertTrue([hasSubstring(@"sub") matches:@"123sub456"], @"Should match string with correct substring");
+  XCTAssertTrue([hasSubstring(@"sub") matches:@"123sub456"], @"Should match string with correct substring");
 }
 
 - (void)testShouldNotMatchItemIfItDoesNotContainTheSubstring
 {
-  STAssertFalse([hasSubstring(@"sub") matches:@"123456"], @"Should not match string with incorrect substring");
+  XCTAssertFalse([hasSubstring(@"sub") matches:@"123456"], @"Should not match string with incorrect substring");
 }
 
 - (void)testShouldNotMatchItemIfItIsNotAString
 {
-  STAssertFalse([hasSubstring(@"sub") matches:@[]], @"Should match string with array");
+  XCTAssertFalse([hasSubstring(@"sub") matches:@[]], @"Should match string with array");
 }
 
 @end

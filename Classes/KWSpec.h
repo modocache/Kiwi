@@ -5,7 +5,7 @@
 //
 
 #import "KiwiConfiguration.h"
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "KWExpectationType.h"
 #import "KWVerifying.h"
 #import "KWExampleGroupDelegate.h"
@@ -13,7 +13,7 @@
 
 @class KWCallSite;
 
-@interface KWSpec : SenTestCase<KWExampleDelegate>
+@interface KWSpec : XCTestCase<KWExampleDelegate>
 
 #pragma mark - Adding Verifiers
 

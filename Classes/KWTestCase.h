@@ -5,7 +5,7 @@
 //
 
 #import "KiwiConfiguration.h"
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 #import "KWExpectationType.h"
 #import "KWReporting.h"
 
@@ -15,7 +15,7 @@
 @protocol KWVerifying;
 
 // Deprecated. This is here just in case blocks are not enabled.
-@interface KWTestCase : SenTestCase<KWReporting>
+@interface KWTestCase : XCTestCase<KWReporting>
 
 #pragma mark - Configuring Example Environments
 

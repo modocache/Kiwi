@@ -13,7 +13,7 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWCaptureTest : SenTestCase
+@interface KWCaptureTest : XCTestCase
 
 @end
 
@@ -31,7 +31,7 @@
     void (^block)(void) = spy.argument;
     block();
     
-    STAssertTrue(didCall, @"Should have captured and invoked block");
+    XCTAssertTrue(didCall, @"Should have captured and invoked block");
 }
 
 - (void)testShouldBeAbleToCaptureObjects {
@@ -40,7 +40,7 @@
     
     [robotMock speak:@"Hello" afterDelay:2 whenDone:^{}];
     
-    STAssertEqualObjects(spy.argument, @"Hello", @"Captured argument should be equal to 'Hello'");    
+    XCTAssertEqualObjects(spy.argument, @"Hello", @"Captured argument should be equal to 'Hello'");    
 }
 
 - (void)testShouldBeAbleToCaptureValues {
@@ -49,7 +49,7 @@
     
     [robotMock speak:@"Hello" afterDelay:2 whenDone:^{}];
     
-    STAssertEqualObjects(spy.argument, [KWValue valueWithDouble:2], @"Captured argument should be equal to '2'");        
+    XCTAssertEqualObjects(spy.argument, [KWValue valueWithDouble:2], @"Captured argument should be equal to '2'");        
 }
 
 - (void)testShouldBeAbleToCaptureNils {
@@ -58,14 +58,14 @@
     
     [robotMock speak:nil afterDelay:2 whenDone:^{}];
     
-    STAssertNil(spy.argument, @"Captured argument should be nil");
+    XCTAssertNil(spy.argument, @"Captured argument should be nil");
 }
 
 - (void)testShouldRaiseAnExceptionIfArgumentHasNotBeenCaptured {
     id robotMock = [KWMock nullMockForClass:[Robot class]];
     KWCaptureSpy *spy = [robotMock captureArgument:@selector(speak:afterDelay:whenDone:) atIndex:1];
     
-    STAssertThrows([spy argument], @"Should have raised an exception");
+    XCTAssertThrows([spy argument], @"Should have raised an exception");
 }
 
 - (void)tearDown {

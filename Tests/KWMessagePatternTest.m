@@ -10,7 +10,7 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWMessagePatternTest : SenTestCase
+@interface KWMessagePatternTest : XCTestCase
 
 @end
 
@@ -26,9 +26,9 @@
     KWMessagePattern *messagePattern = [self messagePatternWithSelector:@selector(dictionaryWithObjects:forKeys:count:) arguments:@"foo",
                                                                                                                                   nil,
                                                                                                                                   [KWValue valueWithUnsignedInt:1]];
-    STAssertEqualObjects((messagePattern.argumentFilters)[0], @"foo", @"expected matching argument");
-    STAssertEqualObjects((messagePattern.argumentFilters)[1], [KWNull null], @"expected matching argument");
-    STAssertEqualObjects((messagePattern.argumentFilters)[2], [KWValue valueWithUnsignedInt:1], @"expected matching argument");
+    XCTAssertEqualObjects((messagePattern.argumentFilters)[0], @"foo", @"expected matching argument");
+    XCTAssertEqualObjects((messagePattern.argumentFilters)[1], [KWNull null], @"expected matching argument");
+    XCTAssertEqualObjects((messagePattern.argumentFilters)[2], [KWValue valueWithUnsignedInt:1], @"expected matching argument");
 }
 
 - (void)testItShouldMatchInvocationsWithNilArguments {
@@ -44,7 +44,7 @@
     NSKeyValueObservingOptions options = 0;
     void *context = nil;
     [invocation setMessageArguments:&observer, &keyPath, &options, &context];
-    STAssertTrue([messagePattern matchesInvocation:invocation], @"expected matching invocation");
+    XCTAssertTrue([messagePattern matchesInvocation:invocation], @"expected matching invocation");
 }
 
 - (void)testItShouldMatchInvocationsWithAnyArguments {
@@ -60,7 +60,7 @@
     NSKeyValueObservingOptions options = 1;
     void *context = nil;
     [invocation setMessageArguments:&observer, &keyPath, &options, &context];
-    STAssertTrue([messagePattern matchesInvocation:invocation], @"expected matching invocation");
+    XCTAssertTrue([messagePattern matchesInvocation:invocation], @"expected matching invocation");
 }
 
 - (void)testItShouldNotMatchInvocationsWithAnyArguments {
@@ -76,7 +76,7 @@
     NSKeyValueObservingOptions options = 1;
     void *context = nil;
     [invocation setMessageArguments:&observer, &keyPath, &options, &context];
-    STAssertTrue(![messagePattern matchesInvocation:invocation], @"expected non-matching invocation");
+    XCTAssertTrue(![messagePattern matchesInvocation:invocation], @"expected non-matching invocation");
 }
 
 - (void)testItShouldNotMatchInvocationsWithDifferentArguments {
@@ -92,15 +92,15 @@
     NSKeyValueObservingOptions options = 0;
     void *context = nil;
     [invocation setMessageArguments:&observer, &keyPath, &options, &context];
-    STAssertTrue(![messagePattern matchesInvocation:invocation], @"expected non-matching invocation");
+    XCTAssertTrue(![messagePattern matchesInvocation:invocation], @"expected non-matching invocation");
 }
 
 - (void)testItShouldCompareMessagePatternsWithNilAndNonNilArgumentFilters {
     KWMessagePattern *messagePattern1 = [KWMessagePattern messagePatternWithSelector:@selector(foobar:)];
     NSArray *argumentFilters = @[[KWValue valueWithUnsignedInt:42]];
     KWMessagePattern *messagePattern2 = [KWMessagePattern messagePatternWithSelector:@selector(foobar:) argumentFilters:argumentFilters];
-    STAssertFalse([messagePattern1 isEqual:messagePattern2], @"expected message patterns to compare as not equal");
-    STAssertFalse([messagePattern2 isEqual:messagePattern1], @"expected message patterns to compare as not equal");
+    XCTAssertFalse([messagePattern1 isEqual:messagePattern2], @"expected message patterns to compare as not equal");
+    XCTAssertFalse([messagePattern2 isEqual:messagePattern1], @"expected message patterns to compare as not equal");
 }
 
 @end

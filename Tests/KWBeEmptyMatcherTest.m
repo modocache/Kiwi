@@ -10,7 +10,7 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWEmptyCollectionMatcherTest : SenTestCase
+@interface KWEmptyCollectionMatcherTest : XCTestCase
 
 @end
 
@@ -19,7 +19,7 @@
 - (void)testItShouldHaveTheRightMatcherStrings {
     NSArray *matcherStrings = [KWBeEmptyMatcher matcherStrings];
     NSArray *expectedStrings = @[@"beEmpty"];
-    STAssertEqualObjects([matcherStrings sortedArrayUsingSelector:@selector(compare:)],
+    XCTAssertEqualObjects([matcherStrings sortedArrayUsingSelector:@selector(compare:)],
                          [expectedStrings sortedArrayUsingSelector:@selector(compare:)],
                          @"expected specific matcher strings");
 }
@@ -28,21 +28,21 @@
     id subject = @{};
     id matcher = [KWBeEmptyMatcher matcherWithSubject:subject];
     [matcher beEmpty];
-    STAssertTrue([matcher evaluate], @"expected positive match");
+    XCTAssertTrue([matcher evaluate], @"expected positive match");
 }
 
 - (void)testItShouldNotMatchNonEmptyCollections {
     id subject = @{@"foo": @"bar"};
     id matcher = [KWBeEmptyMatcher matcherWithSubject:subject];
     [matcher beEmpty];
-    STAssertFalse([matcher evaluate], @"expected negative match");
+    XCTAssertFalse([matcher evaluate], @"expected negative match");
 }
 
 
 - (void)testItShouldHaveHumanReadableDescription
 {
   id matcher = [KWBeEmptyMatcher matcherWithSubject:nil];
-  STAssertEqualObjects(@"be empty", [matcher description], @"description should match");
+  XCTAssertEqualObjects(@"be empty", [matcher description], @"description should match");
 }
 
 @end

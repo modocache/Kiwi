@@ -10,7 +10,7 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWExampleGroupBuilderTest : SenTestCase
+@interface KWExampleGroupBuilderTest : XCTestCase
 
 @end
 
@@ -18,15 +18,15 @@
 
 - (void)testItShouldBuildExampleGroups {
     id exampleGroup = [[KWExampleGroupBuilder sharedExampleGroupBuilder] buildExampleGroups:^{}];
-    STAssertNotNil(exampleGroup, @"expected example group to be created");
-    STAssertFalse([[KWExampleGroupBuilder sharedExampleGroupBuilder] isBuildingExampleGroup], @"example group builder must be clean for other tests to run cleanly");
+    XCTAssertNotNil(exampleGroup, @"expected example group to be created");
+    XCTAssertFalse([[KWExampleGroupBuilder sharedExampleGroupBuilder] isBuildingExampleGroup], @"example group builder must be clean for other tests to run cleanly");
 }
 
 - (void)testItShouldRaiseWhenPopContextUnmatched {
     [[KWExampleGroupBuilder sharedExampleGroupBuilder] buildExampleGroups:^{
-        STAssertThrows([[KWExampleGroupBuilder sharedExampleGroupBuilder] popContextNode], @"expected raised exception");
+        XCTAssertThrows([[KWExampleGroupBuilder sharedExampleGroupBuilder] popContextNode], @"expected raised exception");
     }];
-    STAssertFalse([[KWExampleGroupBuilder sharedExampleGroupBuilder] isBuildingExampleGroup], @"example group builder must be clean for other tests to run cleanly");
+    XCTAssertFalse([[KWExampleGroupBuilder sharedExampleGroupBuilder] isBuildingExampleGroup], @"example group builder must be clean for other tests to run cleanly");
 }
 
 @end
