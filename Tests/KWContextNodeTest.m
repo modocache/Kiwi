@@ -10,7 +10,7 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWContextNodeTest : SenTestCase
+@interface KWContextNodeTest : XCTestCase
 
 @end
 
@@ -21,7 +21,7 @@
     __block NSUInteger tag = 0;
     void (^block)(void) = ^{ ++tag; };
     [node setBeforeEachNode:[KWBeforeEachNode beforeEachNodeWithCallSite:nil block:block]];
-    STAssertThrows([node setBeforeEachNode:[KWBeforeEachNode beforeEachNodeWithCallSite:nil block:block]], @"expected exception");
+    XCTAssertThrows([node setBeforeEachNode:[KWBeforeEachNode beforeEachNodeWithCallSite:nil block:block]], @"expected exception");
 }
 
 - (void)testItShouldAllowOnlyOneAfterEachBlock {
@@ -29,7 +29,7 @@
     __block NSUInteger tag = 0;
     void (^block)(void) = ^{ ++tag; };
     [node setAfterEachNode:[KWAfterEachNode afterEachNodeWithCallSite:nil block:block]];
-    STAssertThrows([node setAfterEachNode:[KWAfterEachNode afterEachNodeWithCallSite:nil block:block]], @"expected exception");
+    XCTAssertThrows([node setAfterEachNode:[KWAfterEachNode afterEachNodeWithCallSite:nil block:block]], @"expected exception");
 }
 
 @end

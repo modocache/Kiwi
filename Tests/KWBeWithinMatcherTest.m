@@ -10,7 +10,7 @@
 
 #if KW_TESTS_ENABLED
 
-@interface KWBeWithinMatcherTest : SenTestCase
+@interface KWBeWithinMatcherTest : XCTestCase
 
 @end
 
@@ -19,7 +19,7 @@
 - (void)testItShouldHaveTheRightMatcherStrings {
     NSArray *matcherStrings = [KWBeWithinMatcher matcherStrings];
     NSArray *expectedStrings = @[@"beWithin:of:", @"equal:withDelta:"];
-    STAssertEqualObjects([matcherStrings sortedArrayUsingSelector:@selector(compare:)],
+    XCTAssertEqualObjects([matcherStrings sortedArrayUsingSelector:@selector(compare:)],
                          [expectedStrings sortedArrayUsingSelector:@selector(compare:)],
                          @"expected specific matcher strings");
 }
@@ -28,21 +28,21 @@
     id subject = [KWValue valueWithInt:42];
     id matcher = [KWBeWithinMatcher matcherWithSubject:subject];
     [matcher beWithin:[KWValue valueWithInt:2] of:[KWValue valueWithInt:40]];
-    STAssertTrue([matcher evaluate], @"expected positive match");
+    XCTAssertTrue([matcher evaluate], @"expected positive match");
 }
 
 - (void)testItShouldNotMatchNonCloseObjects {
     id subject = [KWValue valueWithInt:42];
     id matcher = [KWBeWithinMatcher matcherWithSubject:subject];
     [matcher beWithin:[KWValue valueWithInt:1] of:[KWValue valueWithInt:40]];
-    STAssertFalse([matcher evaluate], @"expected negative match");
+    XCTAssertFalse([matcher evaluate], @"expected negative match");
 }
 
 - (void)testItShouldHaveHumanReadableDescription
 {
   id matcher = [KWBeWithinMatcher matcherWithSubject:nil];
   [matcher beWithin:[KWValue valueWithInt:1] of:[KWValue valueWithInt:40]];
-  STAssertEqualObjects(@"be within 1 of 40", [matcher description], @"description should match");
+  XCTAssertEqualObjects(@"be within 1 of 40", [matcher description], @"description should match");
 }
 
 @end

@@ -175,20 +175,12 @@ SPEC_END
 
 #if KW_TESTS_ENABLED
 
-#ifdef XCT_EXPORT
 @interface KWFunctionalTests : XCTestCase
-#else
-@interface KWFunctionalTests : SenTestCase
-#endif
 @end
 @implementation KWFunctionalTests
 
 - (void)testSuiteWasExecuted {
-#ifdef XCT_EXPORT
     XCTAssertTrue(tests_were_run, @"Test suite hasn't run!");
-#else
-    STAssertTrue(tests_were_run, @"Test suite hasn't run!");
-#endif
 }
 
 @end

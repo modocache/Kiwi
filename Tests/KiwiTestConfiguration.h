@@ -8,4 +8,3 @@
 // focus on a single issue that could be affected by other tests, especially
 // when dealing with Class method stubs, alloc/init stubs, etc.
 #define KW_TESTS_ENABLED 1
-#import <SenTestingKit/SenTestingKit.h>

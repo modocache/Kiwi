@@ -859,7 +859,7 @@
 		C533F7D817462DC8000CAB02 /* SenTestSuite+KiwiAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SenTestSuite+KiwiAdditions.m"; sourceTree = "<group>"; };
 		C922D1DC158045FC00995B43 /* KWStringContainsMatcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWStringContainsMatcherTest.m; sourceTree = "<group>"; };
 		F5015B9F11583A77002E9A98 /* libKiwi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKiwi.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5015C9E11584017002E9A98 /* KiwiTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5015C9E11584017002E9A98 /* KiwiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KiwiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F508565011BE61A1000EAD4E /* KiwiTestConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KiwiTestConfiguration.h; sourceTree = "<group>"; };
 		F51A59BE1191D45500598B04 /* KWRealObjectStubTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KWRealObjectStubTest.m; sourceTree = "<group>"; };
 		F53B5E42115B33FC0022BC0B /* KWContainMatcherTest.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = KWContainMatcherTest.m; sourceTree = "<group>"; tabWidth = 4; };
@@ -955,7 +955,7 @@
 			isa = PBXGroup;
 			children = (
 				F5015B9F11583A77002E9A98 /* libKiwi.a */,
-				F5015C9E11584017002E9A98 /* KiwiTests.octest */,
+				F5015C9E11584017002E9A98 /* KiwiTests.xctest */,
 				832C83C7157263B300F160D5 /* libKiwi-OSX.a */,
 			);
 			name = Products;
@@ -1617,8 +1617,8 @@
 			);
 			name = KiwiTests;
 			productName = KiwiBuildTests;
-			productReference = F5015C9E11584017002E9A98 /* KiwiTests.octest */;
-			productType = "com.apple.product-type.bundle";
+			productReference = F5015C9E11584017002E9A98 /* KiwiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -2165,14 +2165,13 @@
 					SenTestingKit,
 					"-framework",
 					UIKit,
-					"-weak_framework",
+					"-framework",
 					XCTest,
 				);
 				PRODUCT_NAME = KiwiTests;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(NATIVE_ARCH_ACTUAL) $(ARCHS_STANDARD_32_BIT)";
-				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
 		};
@@ -2199,14 +2198,13 @@
 					SenTestingKit,
 					"-framework",
 					UIKit,
-					"-weak_framework",
+					"-framework",
 					XCTest,
 				);
 				PRODUCT_NAME = KiwiTests;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "$(NATIVE_ARCH_ACTUAL) $(ARCHS_STANDARD_32_BIT)";
-				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
 			name = Release;
