@@ -80,6 +80,17 @@
     return [exampleSuite invocationsForTestCase];
 }
 
+- (void)failWithException:(NSException *)anException {
+#ifdef XCT_EXPORT
+    [self recordFailureWithDescription:[anException description]
+                                inFile:nil
+                                atLine:0
+                              expected:NO];
+#else
+    [super failWithException:anException];
+#endif
+}
+
 #pragma mark - Running Specs
 
 - (void)invokeTest {

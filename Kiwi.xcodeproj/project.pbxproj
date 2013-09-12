@@ -2161,10 +2161,12 @@
 					"-all_load",
 					"-framework",
 					Foundation,
-					"-framework",
+					"-weak_framework",
 					SenTestingKit,
 					"-framework",
 					UIKit,
+					"-weak_framework",
+					XCTest,
 				);
 				PRODUCT_NAME = KiwiTests;
 				RUN_CLANG_STATIC_ANALYZER = YES;
@@ -2193,10 +2195,12 @@
 					"-all_load",
 					"-framework",
 					Foundation,
-					"-framework",
+					"-weak_framework",
 					SenTestingKit,
 					"-framework",
 					UIKit,
+					"-weak_framework",
+					XCTest,
 				);
 				PRODUCT_NAME = KiwiTests;
 				RUN_CLANG_STATIC_ANALYZER = YES;

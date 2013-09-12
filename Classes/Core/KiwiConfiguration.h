@@ -16,3 +16,11 @@
 #if TARGET_IPHONE_SIMULATOR
     #define KW_TARGET_HAS_INVOCATION_EXCEPTION_BUG 1
 #endif
+
+#import "AvailabilityMacros.h"
+#ifdef MAC_OS_X_VERSION_10_9
+#import <XCTest/XCTest.h>
+#endif
+
+#import <SenTestingKit/SenTestingKit.h>
+

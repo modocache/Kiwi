@@ -6,7 +6,6 @@
 
 // This needs to come first.
 #import "KiwiConfiguration.h"
-#import <SenTestingKit/SenTestingKit.h>
 
 #if defined(__cplusplus)
 extern "C" {
